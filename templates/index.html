@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-text">
+        <h1 class="giant-hello"><i class='fa fa-terminal terminal-icon' aria-hidden="true"></i>Hello.</h1>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/hero-img.png') }}" alt="Faith">
+        </div>
+        <div class="hero-intro">
+            <p><span class="dash">__</span> Its Faith <span class="gold-text">Tum</span></p>
+            <p><span class="dash"></span>__</span> A Full-stack web developer</p>
+        </div>
+        <div class="social-icons">
+            <i class="bx bxl-github"></i>
+            <i class="bx bxl-linkedin"></i>
+            <i class="bx bxl-google"></i>
+        </div>
+    </div>
+    
+</section>
+
+<div class="page1-overlay">
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-grid">
+            <div class="about-text-box">
+                <h2>About <span class="gold-text">Me</span></h2>
+                <p>I am a Full-Stack Developer specialising in building high performance web applications with Python, Flask, and PostgreSQL. 
+                    I take pride in managing the entire lifecycle of a project—from initial wire-framing and UI design to cloud 
+                    deployment on platforms like Railway. 
+                    My goal is to create web experiences that don't just 
+                    work perfectly, but leave a lasting impression on the user.
+                </p>
+                
+            </div>
+
+            <div class="about-group">
+                <div class="about-img-box">
+                    <img src="{{ url_for('static', filename='images/about-img.png') }}" alt="About Faith">
+                </div>
+                <p>I take pride in managing the entire lifecycle of a project—from initial wire-framing and UI design to cloud 
+                    deployment on platforms like Railway. 
+                    My goal is to create web experiences that don't just 
+                    work perfectly, but leave a lasting impression on the user.
+                </p>
+            </div>
+            
+            <!-- EXPERTISE CARDS -->
+            <div class="expertise-row">
+                <div class="card card-brown">
+                    <div class="icon">💻</div>
+                    <div class="card-title">Technical expertise.</div>
+                    <ul>
+                        <li>Python (Flask), JavaScript, HTML, CSS.</li>
+                        <li>Database management using MySQL and SQLAlchemy.</li>
+                        <li>Cloud & Deployment using Railway and Render.</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-green">
+                    <div class="icon">🧩</div>
+                    <h3>Problem solving.</h3>
+                    <ul>
+                        <li>Full-cycle web application development.</li>
+                        <li>Focused on writing clean, dry code.</li>
+                        <li>Debugging; Skilled at identifying and resolving bugs and database connection errors.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- PROJECTS SECTION -->
+
+    <section class="projects-section" id="projects">
+        <div class="title"> Projects </div>
+        <div class="projects-nav">
+            <button class="cat-btn active"> My Projects </a>
+            <div class="cat-nav-divider"></div>
+            <button class="cat-btn"> Team Projects </button> 
+        </div>
+        <div class="project-card">
+            <img class="project-thumbnail" src="{{ url_for('static', filename='images/caffein.png') }}" alt="caffein & chaos">
+            <div class="card-footer">
+                <h3 class="card-title">Caffein & Chaos </h3>
+                <p>Caffeine & Chaos is a full-stack web application designed as a high-end, 
+                    editorial digital experience for a modern coffee brand.
+                </p>
+            </div>
+        </div>
+
+        <div class="cat-scroll-area">
+            <button class="scroll-btn">
+                <i class=" bx-arrow-left-stroke"></i> Previous 
+            </button>
+            <div class="cat-number-box"> 
+                <div class="cat-number"> 1 </div>  
+            </div>
+            <button class="scroll-btn"> 
+                Next <i class="bx bx-arrow-right"></i> 
+            </button>
+        </div>
+
+        <!-- Blogs -->
+        <div class="blogs">
+            <div class="title"> Blogs </div>
+        </div>
+
+    </section>
+
+</div>
+{% endblock %}

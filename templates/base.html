@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Tum</title>
+    <!-- We'll use a high-end serif like Playfair Display and a clean sans-serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LOGO</div>
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT ME</a></li>
+            <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#blog">BLOGS</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Simple footer as per your 'Simple & Creative' goal -->
+        <p>&copy; 2026 Faith. Built with Caffeine & Code.</p>
+    </footer>
+</body>
+</html>
