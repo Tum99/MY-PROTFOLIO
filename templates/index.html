@@ -1,114 +1,74 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faith Tum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
 
-<section class="hero">
-    <div class="hero-text">
-        <h1 class="giant-hello"><i class='fa fa-terminal terminal-icon' aria-hidden="true"></i>Hello.</h1>
-        <div class="hero-image">
-            <img src="{{ url_for('static', filename='images/hero-img.png') }}" alt="Faith">
+  <header class="masthead">
+    <p class="wordmark">Hello,<br>I'm Faith Tum</p>
+    <p class="tagline"><span>Full-Stack</span> Web Developer</p>
+  </header>
+
+  <main class="wheel-section">
+    <div class="wheel-wrap" id="wheel">
+      <div class="grooves" aria-hidden="true"></div>
+      <div class="sheen" aria-hidden="true"></div>
+
+      <!-- Center Disc -->
+      <div class="disc" aria-hidden="true">
+        <div class="disc-avatar-wrap">
+          <img src="/static/images/hero-img.png" alt="Faith Tum" class="disc-avatar" onerror="this.style.display='none'; document.getElementById('discFallback').style.display='flex';">
+          <div class="disc-avatar-fallback" id="discFallback">FT</div>
         </div>
-        <div class="hero-intro">
-            <p><span class="dash">__</span> Its Faith <span class="gold-text">Tum</span></p>
-            <p><span class="dash"></span>__</span> A Full-stack web developer</p>
-        </div>
-        <div class="social-icons">
-            <i class="bx bxl-github"></i>
-            <i class="bx bxl-linkedin"></i>
-            <i class="bx bxl-google"></i>
-        </div>
+      </div>
+      <!-- Items dynamically injected by JS -->
     </div>
-    
-</section>
+  </main>
 
-<div class="page1-overlay">
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-grid">
-            <div class="about-text-box">
-                <h2>About <span class="gold-text">Me</span></h2>
-                <p>I am a Full-Stack Developer specialising in building high performance web applications with Python, Flask, and PostgreSQL. 
-                    I take pride in managing the entire lifecycle of a project—from initial wire-framing and UI design to cloud 
-                    deployment on platforms like Railway. 
-                    My goal is to create web experiences that don't just 
-                    work perfectly, but leave a lasting impression on the user.
-                </p>
-                
-            </div>
+  <footer class="site-footer"></footer>
 
-            <div class="about-group">
-                <div class="about-img-box">
-                    <img src="{{ url_for('static', filename='images/about-img.png') }}" alt="About Faith">
-                </div>
-                <p>I take pride in managing the entire lifecycle of a project—from initial wire-framing and UI design to cloud 
-                    deployment on platforms like Railway. 
-                    My goal is to create web experiences that don't just 
-                    work perfectly, but leave a lasting impression on the user.
-                </p>
-            </div>
-            
-            <!-- EXPERTISE CARDS -->
-            <div class="expertise-row">
-                <div class="card card-brown">
-                    <div class="icon">💻</div>
-                    <div class="card-title">Technical expertise.</div>
-                    <ul>
-                        <li>Python (Flask), JavaScript, HTML, CSS.</li>
-                        <li>Database management using MySQL and SQLAlchemy.</li>
-                        <li>Cloud & Deployment using Railway and Render.</li>
-                    </ul>
-                </div>
-                
-                <div class="card card-green">
-                    <div class="icon">🧩</div>
-                    <h3>Problem solving.</h3>
-                    <ul>
-                        <li>Full-cycle web application development.</li>
-                        <li>Focused on writing clean, dry code.</li>
-                        <li>Debugging; Skilled at identifying and resolving bugs and database connection errors.</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- modal overlay -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="overlay-panel" id="panel">
+      <button class="close-btn" id="closeBtn" aria-label="Close">✕</button>
+      
+      <div class="panel-top" id="panelTop">
+        <h2 id="dTitle">PROJECTS</h2>
+        <p class="sub" id="dSub">These are the projects i have been working on</p>
+      </div>
+
+      <div class="panel-body">
+        <div class="portfolio-carousel-nav">
+          <button class="nav-arrow" id="prevBtn" aria-label="Previous item">&lt;</button>
+          <span class="counter" id="itemCounter">1/2</span>
+          <button class="nav-arrow" id="nextBtn" aria-label="Next item">&gt;</button>
         </div>
 
-    </section>
+        <div class="portfolio-display">
+          <h3 class="feature-title" id="dFeatureTitle">CAFFEIN &amp; CHAOS</h3>
+          
+          <div class="feature-image-wrapper">
+            <img src="" alt="Feature Graphic" id="dFeatureImage" class="feature-image" onerror="this.style.display='none'">
+            <div id="dFallbackGraphic" class="fallback-graphic-box">🌿</div>
+          </div>
 
-    <!-- PROJECTS SECTION -->
-
-    <section class="projects-section" id="projects">
-        <div class="title"> Projects </div>
-        <div class="projects-nav">
-            <button class="cat-btn active"> My Projects </a>
-            <div class="cat-nav-divider"></div>
-            <button class="cat-btn"> Team Projects </button> 
+          <p class="feature-description" id="dBlurb"></p>
+          
+          <div class="metadata-stack" id="dMetadataStack">
+            <!-- Programmatically handled key-value descriptors inside here -->
+          </div>
         </div>
-        <div class="project-card">
-            <img class="project-thumbnail" src="{{ url_for('static', filename='images/caffein.png') }}" alt="caffein & chaos">
-            <div class="card-footer">
-                <h3 class="card-title">Caffein & Chaos </h3>
-                <p>Caffeine & Chaos is a full-stack web application designed as a high-end, 
-                    editorial digital experience for a modern coffee brand.
-                </p>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="cat-scroll-area">
-            <button class="scroll-btn">
-                <i class=" bx-arrow-left-stroke"></i> Previous 
-            </button>
-            <div class="cat-number-box"> 
-                <div class="cat-number"> 1 </div>  
-            </div>
-            <button class="scroll-btn"> 
-                Next <i class="bx bx-arrow-right"></i> 
-            </button>
-        </div>
-
-        <!-- Blogs -->
-        <div class="blogs">
-            <div class="title"> Blogs </div>
-        </div>
-
-    </section>
-
-</div>
-{% endblock %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
