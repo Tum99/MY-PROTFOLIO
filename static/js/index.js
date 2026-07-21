@@ -1,200 +1,136 @@
-const directoryData = [
-  {
-    title: 'PROJECTS',
-    sub: 'These are the projects i have been working on',
-    color: '#531E3D',
-    items: [
-      {
-        featureTitle: 'CAFFEINE & CHAOS',
-        image: '/static/images/caffeine-chaos-logo.png',
-        blurb: 'Caffeine & Chaos is a dynamic web application and digital marketplace designed to bridge the gap between local coffee farmers and buyers across Kenya. The platform empowers growers by providing them with custom digital storefronts and dedicated farm profiles where they can showcase their harvest details—such as origin, altitude, and quality certifications—to build trust and transparency with the market. Beyond the marketplace, the platform also features a fully integrated cafe experience, complete with a diverse menu of expertly brewed coffee and a vibrant community space that brings coffee enthusiasts and industry professionals together. With robust buyer and grower dashboards, a dynamic messaging system, and real-time transaction tracking, the platform streamlines the entire supply chain from farm to cup.',
-        meta: [
-          ['Backend', 'Python & Flask'],
-          ['Database & ORM', 'PostgreSQL & SQLAlchemy'],
-          ['Frontend', 'HTML5, CSS3, and JavaScript'],
-          ['Deployment', 'Render (Sandbox hosting)']
-        ]
-      },
-      {
-        featureTitle: 'TASK MANAGEMENT PLATFORM',
-        image: '',
-        blurb: 'An efficient tracking engine complete with complex subtask workflows and an AI-driven automated voice transcription system utilizing generative structuring modules.',
-        meta: [
-          ['Backend', 'Flask Application Core'],
-          ['Architecture', 'Structured JSON Processing Pipeline'],
-          ['Frontend', 'Interactive Action State Matrices']
-        ]
-      }
-    ]
-  },
-  {
-    title: 'WORK',
-    sub: 'Professional experience and structural roles',
-    color: '#531E3D',
-    items: [
-      {
-        featureTitle: 'FULL-STACK SOFTWARE DEVELOPER',
-        image: '',
-        blurb: 'Building highly resilient web ecosystems, focusing on database normalization paradigms, end-to-end API configuration architectures, and custom user interface applications.',
-        meta: [
-          ['Focus Area', 'E-commerce Architecture & Web Deployment Optimization'],
-          ['Platforms', 'Custom Flask Implementations & Dynamic Integration Frameworks']
-        ]
-      }
-    ]
-  },
-
-  {
-    title: 'ABOUT',
-    sub: 'Personal narrative and developer profile',
-    color: '#531E3D',
-    items: [
-      {
-        featureTitle: 'FAITH TUM',
-        image: '',
-        blurb: 'A dedicated full-stack developer focused on engineering functional digital systems that solve localized tracking, community-building, and transaction workflows.',
-        meta: [
-          ['Theme Preferences', 'Minimalist aesthetics utilizing structural slate, charcoal, and dark accents']
-        ]
-      }
-    ]
-  },
-  {
-    title: 'BLOG',
-    sub: 'Written ideas on architecture, coding, and workflow design',
-    color: '#531E3D',
-    items: [
-      {
-        featureTitle: 'DESIGNING COMPACT MARGIN SYLVAN DESIGN BASES',
-        image: '',
-        blurb: 'Exploratory structural analysis covering common dashboard layout traps, dealing with unaligned flexbox dot vectors within list structures, and optimizing line alignments safely.',
-        meta: [
-          ['Published', 'July 2026'],
-          ['Reading Time', '4 mins']
-        ]
-      }
-    ]
-  }
-];
-
-const wheel = document.getElementById('wheel');
-const n = directoryData.length;
-
-let currentCategory = null;
-let currentItemIndex = 0;
-let lastFocused = null;
-
-directoryData.forEach((section, i) => {
-  const angle = (360 / n) * i;
-  const item = document.createElement('div');
-  item.className = 'item';
-  item.style.setProperty('--a', angle + 'deg');
-
-  const btn = document.createElement('button');
-  btn.className = 'item-btn';
-  
-  // Explicitly link layout angles down to the animated node
-  btn.style.setProperty('--a', angle + 'deg');
-  btn.style.setProperty('--base-rot', `-${angle}deg`); // Keeps text upright (0 degrees)
-
-  btn.setAttribute('aria-label', `Explore the ${section.title} section`);
-  btn.innerHTML = `
-    <div class="art" style="--card--color:${section.color}">
-      <span class="letter">${section.title.charAt(0)}</span>
-    </div>
-    <div class="caption">
-      <span class="title">${section.title}</span>
-    </div>
-  `;
-  btn.addEventListener('click', () => openDetail(section));
-  item.appendChild(btn);
-  wheel.appendChild(item);
+// 1. Initialize Smooth Scrolling (Lenis)
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true
 });
 
-const overlay = document.getElementById('overlay');
-const closeBtn = document.getElementById('closeBtn');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+lenis.on('scroll', ScrollTrigger.update);
 
-function openDetail(section) {
-  lastFocused = document.activeElement;
-  currentCategory = section;
-  currentItemIndex = 0;
-  
-  document.getElementById('dTitle').textContent = section.title;
-  document.getElementById('dSub').textContent = section.sub;
-  document.getElementById('panelTop').style.setProperty('--hue', section.hue + 'deg');
-
-  renderCarouselItem();
-
-  overlay.classList.add('open');
-  overlay.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  closeBtn.focus();
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
+requestAnimationFrame(raf);
 
-function renderCarouselItem() {
-  if (!currentCategory || !currentCategory.items.length) return;
+// 2. Register GSAP Plugin (Only once)
+gsap.registerPlugin(ScrollTrigger);
+
+// 3. Section Transitions & Stack Replacement Effects
+const sections = document.querySelectorAll('.transition-target');
+
+sections.forEach((section, index) => {
+  const bgColor = section.getAttribute('data-color');
+  const textColor = section.getAttribute('data-text');
+
+  // Core Theme Color Swapper Engine
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top 50%",
+    end: "bottom 50%",
+    onEnter: () => {
+      gsap.to(".portfolio-container", { background: bgColor, color: textColor, duration: 0.8 });
+    },
+    onEnterBack: () => {
+      gsap.to(".portfolio-container", { background: bgColor, color: textColor, duration: 0.8 });
+    }
+  });
+
+  // Sticky Card Out-Fade Effect (Skips the final section layout)
+  if (index === sections.length - 1) return;
+
+  gsap.to(section, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+      pin: true,          
+      pinSpacing: false   
+    },
+    opacity: 0,
+    scale: 0.96,
+    ease: "none" // Set to none for smooth scrolling linking
+  });
+});
+
+// 4. Reveal Titles On Scroll
+document.querySelectorAll('.reveal-text').forEach((text) => {
+  gsap.fromTo(text, 
+    { y: 40, opacity: 0 }, 
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: text,
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+});
+
+// 5. Smart Multi-Directional Fade Engine (Handles both layouts)
+document.querySelectorAll('.fade-in-up, .fade-in-directed').forEach((el) => {
+  const direction = el.getAttribute('data-direction') || 'up'; 
   
-  const currentItem = currentCategory.items[currentItemIndex];
-  const totalItems = currentCategory.items.length;
+  let initialX = 0;
+  let initialY = 0;
+  const distance = 40; 
 
-  document.getElementById('itemCounter').textContent = `${currentItemIndex + 1}/${totalItems}`;
-  document.getElementById('dFeatureTitle').textContent = currentItem.featureTitle;
-  document.getElementById('dBlurb').textContent = currentItem.blurb;
+  if (direction === 'up')    initialY = distance;
+  if (direction === 'down')  initialY = -distance;
+  if (direction === 'left')  initialX = -distance;
+  if (direction === 'right') initialX = distance;
 
-  const imgEl = document.getElementById('dFeatureImage');
-  const fallbackEl = document.getElementById('dFallbackGraphic');
+  gsap.fromTo(el,
+    { 
+      x: initialX,
+      y: initialY, 
+      opacity: 0 
+    },
+    {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+});
 
-  if (currentItem.image && currentItem.image.trim() !== "") {
-    imgEl.src = currentItem.image;
-    imgEl.style.display = 'block';
-    fallbackEl.style.display = 'none';
-  } else {
-    imgEl.src = '';
-    imgEl.style.display = 'none';
-    fallbackEl.style.display = 'flex';
-  }
+// Horizontal Slider Button Controller
+const slider = document.querySelector('.project-slider');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 
-  const metaContainer = document.getElementById('dMetadataStack');
-  metaContainer.innerHTML = '';
-  
-  if (currentItem.meta && currentItem.meta.length > 0) {
-    const sectionHeading = document.createElement('h4');
-    sectionHeading.className = 'meta-block-heading';
-    sectionHeading.textContent = currentCategory.title === 'PROJECTS' ? 'TECH STACK' : 'DETAILS';
-    metaContainer.appendChild(sectionHeading);
+if (slider && prevBtn && nextBtn) {
+  // Quantifies scroll distance based on the dynamic width of one project card
+  const getScrollAmount = () => {
+    const card = slider.querySelector('.project-card');
+    return card ? card.offsetWidth + 40 : 400; // Card width + gap size
+  };
 
-    currentItem.meta.forEach(([key, val]) => {
-      const metaRow = document.createElement('div');
-      metaRow.className = 'meta-row-item';
-      metaRow.innerHTML = `<strong>${key}:</strong> <span>${val}</span>`;
-      metaContainer.appendChild(metaRow);
+  // Next Click Event
+  nextBtn.addEventListener('click', () => {
+    slider.scrollBy({
+      left: getScrollAmount(),
+      behavior: 'smooth' // Native smooth scrolling animation
     });
-  }
+  });
+
+  // Previous Click Event
+  prevBtn.addEventListener('click', () => {
+    slider.scrollBy({
+      left: -getScrollAmount(),
+      behavior: 'smooth'
+    });
+  });
 }
-
-prevBtn.addEventListener('click', () => {
-  if (!currentCategory) return;
-  currentItemIndex = (currentItemIndex - 1 + currentCategory.items.length) % currentCategory.items.length;
-  renderCarouselItem();
-});
-
-nextBtn.addEventListener('click', () => {
-  if (!currentCategory) return;
-  currentItemIndex = (currentItemIndex + 1) % currentCategory.items.length;
-  renderCarouselItem();
-});
-
-function closeDetail() {
-  overlay.classList.remove('open');
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  if (lastFocused) lastFocused.focus();
-}
-
-closeBtn.addEventListener('click', closeDetail);
-overlay.addEventListener('click', (e) => { if (e.target === overlay) closeDetail(); });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && overlay.classList.contains('open')) closeDetail();
-});

@@ -11,64 +11,86 @@
 </head>
 <body>
 
-  <header class="masthead">
-    <p class="wordmark">Hello,<br>I'm Faith Tum</p>
-    <p class="tagline"><span>Full-Stack</span> Web Developer</p>
-  </header>
+  <main class="portfolio-container">
+    
+    <!-- HERO SECTION -->
+    <section class="hero-section transition-target" data-color="rgba(40, 20, 30, 0.85)" data-text="#FFFFFF">
+      <div class="hero-content">
+        <p class="hero-intro reveal-text">HELLO. IT'S ME,</p>
+        <h1 class="hero-name reveal-text">FAITH TUM</h1>
+        <p class="hero-separator reveal-text">A</p>
+        <h2 class="hero-title reveal-text">FULL-STACK<br>WEB DEVELOPER</h2>
+      </div>
+      <div class="hero-image-wrap fade-in-directed" data-direction="up">
+        <img src="/static/images/img1.jpeg" alt="Faith Tum" class="hero-img">
+      </div>
+    </section>
 
-  <main class="wheel-section">
-    <div class="wheel-wrap" id="wheel">
-      <div class="grooves" aria-hidden="true"></div>
-      <div class="sheen" aria-hidden="true"></div>
-
-      <!-- Center Disc -->
-      <div class="disc" aria-hidden="true">
-        <div class="disc-avatar-wrap">
-          <img src="/static/images/hero-img.png" alt="Faith Tum" class="disc-avatar" onerror="this.style.display='none'; document.getElementById('discFallback').style.display='flex';">
-          <div class="disc-avatar-fallback" id="discFallback">FT</div>
+    <!-- ABOUT SECTION -->
+    <section class="about-section transition-target" data-color="rgba(25, 25, 35, 0.9)" data-text="#FFF5DA">
+      <h2 class="section-heading reveal-text">ABOUT ME</h2>
+      <div class="about-grid">
+        <div class="about-image-wrap fade-in-directed" data-direction="left">
+          <img src="/static/images/img2.jpeg" alt="Faith working" class="about-img">
+        </div>
+        <div class="about-text fade-in-directed" data-direction="right">
+          <p>I'm a 26-year-old developer and singer-songwriter living in Nairobi. I live for the creative side of tech.</p>
+          <p>As a designer and developer, I handle everything from the behind-the-scenes logic (backend) to the vibrant, visual storytelling (frontend). Basically, I write code that works seamlessly and music that connects deeply. Glad you're here!</p>
         </div>
       </div>
-      <!-- Items dynamically injected by JS -->
-    </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section transition-target" data-color="rgba(28, 18, 14, 0.92)" data-text="#FCF4E8">
+      <h2 class="section-heading reveal-text">MY PROJECTS</h2>
+      
+      <!-- Slider Navigation Arrow Controls -->
+      <div class="slider-controls">
+        <button class="slider-arrow prev-btn" aria-label="Previous Project">&#8592;</button>
+        <button class="slider-arrow next-btn" aria-label="Next Project">&#8594;</button>
+      </div>
+
+      <div class="projects-slider">
+        
+        <!-- Project Card: Caffeine & Chaos -->
+        <div class="project-card fade-in-directed" data-direction="up">
+          <div class="project-info">
+            <h3 class="project-title">CAFFEINE & CHAOS</h3>
+            <p class="project-subtitle">WEBSITE FOR EVERYTHING COFFEE</p>
+          </div>
+          <div class="project-image-wrap">
+            <video autoplay loop muted playsinline class="project-preview-video">
+              <source src="{{ url_for('static', filename='videos/caffein-preview.mp4') }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <!-- Project Card: Ongea Task -->
+        <div class="project-card fade-in-directed" data-direction="up">
+          <div class="project-info">
+            <h3 class="project-title">ONGEA TASK</h3>  
+            <p class="project-subtitle">TASK MANAGEMENT TOOL</p>
+          </div>
+          <div class="project-image-wrap">
+            <video autoplay loop muted playsinline class="project-preview-video">
+              <source src="{{ url_for('static', filename='videos/ongea-preview.mp4') }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video> 
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer"></footer>
 
-  <!-- modal overlay -->
-  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="overlay-panel" id="panel">
-      <button class="close-btn" id="closeBtn" aria-label="Close">✕</button>
-      
-      <div class="panel-top" id="panelTop">
-        <h2 id="dTitle">PROJECTS</h2>
-        <p class="sub" id="dSub">These are the projects i have been working on</p>
-      </div>
-
-      <div class="panel-body">
-        <div class="portfolio-carousel-nav">
-          <button class="nav-arrow" id="prevBtn" aria-label="Previous item">&lt;</button>
-          <span class="counter" id="itemCounter">1/2</span>
-          <button class="nav-arrow" id="nextBtn" aria-label="Next item">&gt;</button>
-        </div>
-
-        <div class="portfolio-display">
-          <h3 class="feature-title" id="dFeatureTitle">CAFFEIN &amp; CHAOS</h3>
-          
-          <div class="feature-image-wrapper">
-            <img src="" alt="Feature Graphic" id="dFeatureImage" class="feature-image" onerror="this.style.display='none'">
-            <div id="dFallbackGraphic" class="fallback-graphic-box">🌿</div>
-          </div>
-
-          <p class="feature-description" id="dBlurb"></p>
-          
-          <div class="metadata-stack" id="dMetadataStack">
-            <!-- Programmatically handled key-value descriptors inside here -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  <!-- Motion Library CDNs -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
