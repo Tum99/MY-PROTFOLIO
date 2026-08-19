@@ -29,10 +29,10 @@ function toggleContactMethod(method) {
   const subjectGroup = document.getElementById('subjectGroup');
 
   if (method === 'whatsapp') {
-    submitBtn.textContent = 'WhatsApp →';
+    submitBtn.textContent = 'WhatsApp';
     subjectGroup.style.display = 'none';
   } else {
-    submitBtn.textContent = 'Send Email →';
+    submitBtn.textContent = 'Send Email';
     subjectGroup.style.display = 'block';
   }
 }
