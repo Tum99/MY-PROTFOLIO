@@ -284,7 +284,7 @@ body {
 .about-section {
   position: relative;
   width: 100%;
-  padding: 5rem 2rem;
+  padding: 5rem 1rem;
   background-color: #0e141a;
   overflow: hidden;
 }
@@ -566,7 +566,7 @@ body {
 
 /* --- PROJECTS SECTION --- */
 .projects {
-  padding: 5rem 2rem;
+  padding: 5rem 1rem;
   background-color: #0e141a;
 }
 
@@ -839,7 +839,7 @@ body {
 
 @media (max-width: 640px) {
   .contact-section {
-    padding: 7rem 2rem; 
+    padding: 7rem 1rem; 
   }
   .form-grid {
     grid-template-columns: 1fr;
@@ -855,6 +855,12 @@ body {
   }
   .about-broad {
     margin: 5rem 0.5rem;
+  }
+  .about-text p, .item-content p, .story-content p, .hero-desc, .contact-sub{
+    font-size: 1rem;
+  }
+  .method-label {
+    font-size: 0.9rem;
   }
 }
 
