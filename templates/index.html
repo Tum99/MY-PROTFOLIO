@@ -1,96 +1,447 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faith Tum</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faith Tum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="main-header">
+    <nav class="nav-container">
+      <div class="logo">
+        <a href="#hero">
+          <img src="{{ url_for('static', filename='images/Cheptoo 1.svg') }}" alt="Cheptoo Logo">
+        </a>
+      </div>
+      
+      <!-- Mobile Toggle Button -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="tel:+254716366301" class="nav-link contact-phone">+254 716 366301</a>
+      </div>
+    </nav>
+  </header>
 
   <main class="portfolio-container">
     
     <!-- HERO SECTION -->
-    <section class="hero-section transition-target" data-color="rgba(40, 20, 30, 0.85)" data-text="#FFFFFF">
-      <div class="hero-content">
-        <p class="hero-intro reveal-text">HELLO. IT'S ME,</p>
-        <h1 class="hero-name reveal-text">FAITH TUM</h1>
-        <p class="hero-separator reveal-text">A</p>
-        <h2 class="hero-title reveal-text">FULL-STACK<br>WEB DEVELOPER</h2>
-      </div>
-      <div class="hero-image-wrap fade-in-directed" data-direction="up">
-        <img src="/static/images/img1.jpeg" alt="Faith Tum" class="hero-img">
+    <section class="hero-section" id="hero">
+      <div class="hero-intro">
+        
+        <div class="hero-title-wrap"> 
+          <div class="hero-greeting">
+            <p>Hey there. I'm</p>
+          </div>
+          <h1 class="hero-name">Faith<br>Cheptoo<br>Tum.</h1>
+          <div class="custom-line"></div>
+          <div class="hero-email">
+            <a href="mailto:faithtum.cheptoo@gmail.com">faithtum.cheptoo@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="hero-image-wrap">
+          <img src="{{ url_for('static', filename='images/grad-2.svg') }}" alt="Faith Tum" class="hero-img">
+        </div>
+
+        <div class="hero-right">
+          <h2 class="hero-title">A Software Developer</h2>
+          <p class="hero-desc">
+            I design and build websites and web applications from the ground up, making sure they look great on the outside and run smoothly on the inside. I strive to learn, grow every day, and contribute to a team that values clean work and creative problem-solving.
+          </p>
+          
+          <div class="hero-footer-group">
+            <div class="social-links">
+              <a href="https://github.com/Tum99" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+                <img src="{{ url_for('static', filename='assets/icons/github.svg') }}" alt="GitHub">
+              </a>
+              <a href="https://www.linkedin.com/in/faithtum/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                <img src="{{ url_for('static', filename='assets/icons/linkedin.svg') }}" alt="LinkedIn">
+              </a>
+            </div>
+
+            <div class="hero-actions">
+              <a href="{{ url_for('static', filename='assets/faith_tum_resume.pdf') }}" download="faith_tum_resume.pdf" class="btn-download">
+                <span>Download Resume</span>
+                <img src="{{ url_for('static', filename='assets/icons/download.svg') }}" alt="Download Icon">
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
+    
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section transition-target" data-color="rgba(25, 25, 35, 0.9)" data-text="#FFF5DA">
-      <h2 class="section-heading reveal-text">ABOUT ME</h2>
-      <div class="about-grid">
-        <div class="about-image-wrap fade-in-directed" data-direction="left">
-          <img src="/static/images/img2.jpeg" alt="Faith working" class="about-img">
+   <!-- About Story -->
+    <section id="about" class="about-section" aria-label="About Story">
+      <h2 class="section-heading">ABOUT ME</h2>
+      <div class="custom-line2"></div>
+      <div class="about-broad">
+        <div class="story-content">
+          <p>
+            My interests in computers and complex systems began as far back as I can remember. Driven by curiosity about how technology 
+            functions behind the scenes, that spark naturally evolved into a passion for software development.
+            While my formal university education provided a valuable foundation, my most significant breakthroughs and technical growth 
+            have come from disciplined self-learning. As a self-taught developer, I’ve taken complete ownership of my learning and mastering 
+            of full-stack web development, backend architecture, and modern system workflows through hands-on practice, problem-solving, and continuous experimentation.
+          </p>
+
+          <p>
+            To complement my independent technical build-outs, I actively participate in technical mentorship programs. These collaborative environments have sharpened 
+            my ability to design scalable database schemas, refine UI/UX architecture, and write production-ready code within structured team dynamics.
+          </p>
+          <p>
+            I take genuine pride in producing clean, well-organized, and maintainable work, enjoying every step of the engineering process—from initial wireframes to final deployment.
+          </p>
+          <p>
+            As I look toward the next chapters of my career, I am eager to transition into a dynamic software engineering team where I can apply my skills to solve real-world problems. 
+            I bring a strong work ethic, a commitment to adding value, and an unstoppable drive to learn, adapt, and grow alongside any team I join.
+          </p>
         </div>
-        <div class="about-text fade-in-directed" data-direction="right">
-          <p>I'm a 26-year-old developer and singer-songwriter living in Nairobi. I live for the creative side of tech.</p>
-          <p>As a designer and developer, I handle everything from the behind-the-scenes logic (backend) to the vibrant, visual storytelling (frontend). Basically, I write code that works seamlessly and music that connects deeply. Glad you're here!</p>
+
+        <div class="education">
+          <div class="education-content">
+            <div class="education-header">Education</div>
+            <div class="education-card">Bachelors Degree in Business and Information Technology at Jomo Kenyatta University of Agriculture and Technology  <span>2018 - 2024 <em>(Graduate)</em></span></div>
+          </div>
+        </div>
+
+        <div class="experience">
+          <div class="experience-content">
+            <div class="experience-header">Experience</div>
+            <div class="experience-list">
+              <div class="list-item">
+                <div class="item-header">
+                  Intern at University of Eldoret (UOE) Tech Department  <span>2022 (May-July)</span>
+                </div> 
+                <div class="item-content">
+                  <p>I provided technical support across campus, configuring hardware, deploying software, and resolving network issues for faculty and students while 
+                    documenting standard operating procedures and managing hardware assets. Additionally, I maintained server infrastructure and managed user access 
+                    controls to ensure system security.</p>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <div class="item-header">
+                  AI/Data Annotator - OneForma <span>2024 - <em>present</em></span>
+                </div>
+                <div class="item-content">
+                  <p>Reviewed and rated search results, maps, and other online content for relevance, accuracy, and quality, helping improve AI and search systems.</p>
+                </div>
+              </div>
+
+              <div class="list-item">
+                <div class="item-header">
+                  Software Development Mentee - Ongea-Tech <span>2024 - <em>present</em></span>
+                </div>
+                <div class="item-content">
+                  <p>I collaborated in a team environment to design, build, and deploy full-stack web applications. Working with modern stack tools like Flask, SQLAlchemy, and Git, I translated project 
+                    requirements and Figma UI wireframes into production-ready code while gaining hands-on experience in structured software engineering workflows, code reviews, and database architecture.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="about-details">
+        <div class="wallpaper">
+          <img src="{{ url_for('static', filename='images/wallpaper.svg') }}" alt="">
+        </div>
+        
+        <div class="about-context">
+          <div class="about-top">
+            <h2 class="section-heading">Acquired Skills</h2>
+            <div class="custom-line2"></div>
+            <div class="about-text">
+              <p>
+                Through continuous hands-on building, I have gained strong set of technical skills focused on full-stack web development and backend architecture. 
+                Here are the core tools and technologies I work with:
+              </p>
+            </div>
+          </div>
+        
+          <div class="about-content">
+            <div class="about-bottom">
+              
+              <!-- Stack 1 -->
+              <div class="skills-stack">
+                <h3 class="stack-heading">Frontend</h3>
+                <div class="divider"></div>
+                <div class="skills-list">
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/JavaScript.svg') }}" alt="JavaScript"></div>
+                    <div class="skill-info"><div class="skill-title">JavaScript</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/HTML5.svg') }}" alt="HTML5"></div>
+                    <div class="skill-info"><div class="skill-title">HTML</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/css.svg') }}" alt="CSS"></div>
+                    <div class="skill-info"><div class="skill-title">CSS</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/jinja-svgrepo-com.svg') }}" alt="Jinja2"></div>
+                    <div class="skill-info"><div class="skill-title">Jinja 2</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stack 2 -->
+              <div class="skills-stack">
+                <h3 class="stack-heading">Database Management</h3>
+                <div class="divider"></div>
+                <div class="skills-list">
+                  <div class="skill-card"> 
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/PostgresSQL.svg') }}" alt="PostgreSQL"></div>
+                    <div class="skill-info"><div class="skill-title">PostgreSQL</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/MySQL.svg') }}" alt="MySQL"></div>
+                    <div class="skill-info"><div class="skill-title">MySQL</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/SQLAlchemy.svg') }}" alt="SQLAlchemy"></div>
+                    <div class="skill-info"><div class="skill-title">SQLAlchemy</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stack 3 -->
+              <div class="skills-stack">
+                <h3 class="stack-heading">Tools</h3>
+                <div class="divider"></div>
+                <div class="skills-list">
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/github.svg') }}" alt="Git"></div>
+                    <div class="skill-info"><div class="skill-title">Git & GitHub</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/figma.svg') }}" alt="Figma"></div>
+                    <div class="skill-info"><div class="skill-title">Figma</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/Docker.svg') }}" alt="Docker"></div>
+                    <div class="skill-info"><div class="skill-title">Docker</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/DBeaver.svg') }}" alt="DBeaver"></div>
+                    <div class="skill-info"><div class="skill-title">DBeaver</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/render.svg') }}" alt="Render"></div>
+                    <div class="skill-info"><div class="skill-title">Render</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/neon.png') }}" alt="Neon"></div>
+                    <div class="skill-info"><div class="skill-title">Neon</div></div>
+                  </div>
+                  
+                </div>
+              </div>
+
+              <!-- Stack 4 -->
+              <div class="skills-stack">
+                <h3 class="stack-heading">Backend</h3>
+                <div class="divider"></div>
+                <div class="skills-list">
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/Python.svg') }}" alt="Python Flask"></div>
+                    <div class="skill-info"><div class="skill-title">Python - Flask</div></div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-logo"><img src="{{ url_for('static', filename='assets/icons/restful-api.svg') }}" alt="REST API"></div>
+                    <div class="skill-info"><div class="skill-title">RESTful API</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS SECTION -->
-    <section class="projects-section transition-target" data-color="rgba(28, 18, 14, 0.92)" data-text="#FCF4E8">
-      <h2 class="section-heading reveal-text">MY PROJECTS</h2>
+    <section class="projects" id="projects">
+      <div class="projects-container">
+        <h2 class="section-heading">PROJECTS</h2>
+        <div class="custom-line2"></div>
       
-      <!-- Slider Navigation Arrow Controls -->
-      <div class="slider-controls">
-        <button class="slider-arrow prev-btn" aria-label="Previous Project">&#8592;</button>
-        <button class="slider-arrow next-btn" aria-label="Next Project">&#8594;</button>
+        <!-- Project 1 -->
+        <article class="project-card left">
+          <div class="project-info">
+            <h3 class="project-title">Caffeine & Chaos</h3>
+            <div class="tech-stack">
+              <span class="stack-tag">Flask</span>
+              <span class="stack-tag">PostgreSQL</span>
+              <span class="stack-tag">Jinja2</span>
+              <span class="stack-tag">CSS3</span>
+            </div>
+            <p class="project-description">
+              An end-to-end full stack web application that connects local coffee growers directly with buyers through an online marketplace and digital menu, giving farmers a direct shop to sell specialty beans and merchandise.
+            </p>
+            <div class="project-actions">
+              <a href="https://github.com/Tum99/CAFFEIN-CHAOS-SANDBOX" target="_blank" rel="noopener" class="btn-main">View GitHub</a>
+              <a href="https://caffein-and-chaos.onrender.com/" target="_blank" rel="noopener" class="btn-second">View Project</a>
+            </div>
+          </div>
+          <div class="visuals"> 
+            <div class="project-visual">
+              <video autoplay loop muted playsinline>
+                <source src="{{ url_for('static', filename='images/caffein-preview.mp4') }}" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card right">
+          <div class="visuals">
+            <div class="project-visual">
+              <video autoplay loop muted playsinline>
+                <source src="{{ url_for('static', filename='images/ongea-preview.mp4') }}" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">OngeaTask</h3>
+            <div class="tech-stack">
+              <span class="stack-tag">HTML</span>
+              <span class="stack-tag">CSS</span>
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">MySQL</span>
+            </div>
+            <p class="project-description">
+              A productivity task management web application created to organize daily tasks, featuring structured workflows, relational data tracking, and dynamic updates.
+            </p>
+            <div class="project-actions">
+              <a href="https://github.com/Ongea-Tech/OngeaTask" target="_blank" rel="noopener" class="btn-main">View GitHub</a>
+              <a href="https://ongea-task.onrender.com/" target="_blank" rel="noopener" class="btn-second">View Project</a>
+            </div>
+          </div>
+        </article>
+
+          <!-- Project 3 -->
+        <article class="project-card left">
+          <div class="project-info">
+            <h3 class="project-title">Lumora</h3>
+            <div class="tech-stack">
+              <span class="stack-tag">Flask</span>
+              <span class="stack-tag">HTML</span>
+              <span class="stack-tag">Jinja2</span>
+              <span class="stack-tag">CSS3</span>
+            </div>
+            <p class="project-description">
+              This is a web app designed for wellness and lifestyle founders to build a complete, professional online brand. Beyond just displaying a template, 
+              it creates an effortless experience for your visitors, making it easy to showcase your products, share your story, and turn casual browses into loyal customers.
+            </p>
+            <div class="project-actions">
+              <!-- <a href="#" target="_blank" rel="noopener" class="btn-main">View GitHub</a> -->
+              <a   rel="noopener" class="btn-second">In Progress</a>
+            </div>
+          </div>
+          <div class="visuals"> 
+            <div class="project-visual">
+              <img src="{{ url_for('static', filename='images/lumora.png') }}" alt="">
+            </div>
+          </div>
+        </article>
+
       </div>
+    </section>
 
-      <div class="projects-slider">
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="contact-header">
+          <div class="section-heading">Get In Touch!</div>
+          <div class="custom-line2"></div>
+          <p class="contact-sub">Let's build something together. <br>Select preferred method below to reach out</p>
+        </div>
+
+        <!-- Communication Method Selector -->
+        <div class="contact-method-selector">
+          <label class="method-option">
+            <input type="radio" name="comm_method" value="email" checked onchange="toggleContactMethod('email')">
+            <span class="method-box">
+              <span class="method-icon">
+                <img src="{{ url_for('static', filename='images/email1.svg') }}" alt="" class="icon-svg">
+              </span>
+              <span class="method-label">Send Email</span>
+            </span>
+          </label>
+
+          <label class="method-option">
+            <input type="radio" name="comm_method" value="whatsapp" onchange="toggleContactMethod('whatsapp')">
+            <span class="method-box">
+              <span class="method-icon">
+                <img src="{{ url_for('static', filename='images/whatsapp1.svg') }}" alt="" class="icon-svg">
+              </span>
+              <span class="method-label">WhatsApp</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- Contact Form -->
+        <form id="contactForm" action="mailto:faithtum92@gmail.com" method="POST" enctype="text/plain" onsubmit="handleContactSubmit(event)">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Jane Doe" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" name="phone" placeholder="+254 700 000 000" />
+            </div>
+
+            <div class="form-group" id="subjectGroup">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" name="subject" placeholder="Inquiry about specialty beans" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Your Message</label>
+            <textarea id="contactMessage" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">Send Email →</button>
+
+        </form>
         
-        <!-- Project Card: Caffeine & Chaos -->
-        <div class="project-card fade-in-directed" data-direction="up">
-          <div class="project-info">
-            <h3 class="project-title">CAFFEINE & CHAOS</h3>
-            <p class="project-subtitle">WEBSITE FOR EVERYTHING COFFEE</p>
-          </div>
-          <div class="project-image-wrap">
-            <video autoplay loop muted playsinline class="project-preview-video">
-              <source src="{{ url_for('static', filename='videos/caffein-preview.mp4') }}" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-        <!-- Project Card: Ongea Task -->
-        <div class="project-card fade-in-directed" data-direction="up">
-          <div class="project-info">
-            <h3 class="project-title">ONGEA TASK</h3>  
-            <p class="project-subtitle">TASK MANAGEMENT TOOL</p>
-          </div>
-          <div class="project-image-wrap">
-            <video autoplay loop muted playsinline class="project-preview-video">
-              <source src="{{ url_for('static', filename='videos/ongea-preview.mp4') }}" type="video/mp4">
-              Your browser does not support the video tag.
-            </video> 
-          </div>
-        </div>
-
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer"></footer>
+  <footer class="site-footer">
+    <p> Faith Tum. </p>
+  </footer>
 
-  <!-- Motion Library CDNs -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
