@@ -875,6 +875,11 @@ body {
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 /* --- HERO RESPONSIVE MEDIA QUERIES --- */
+@media (min-width: 640px){
+  .hero-image-wrap{
+    width: 500px;
+  }
+}
 
 /* Tablet & Desktop (1024px and up) */
 @media (min-width: 1024px) {
